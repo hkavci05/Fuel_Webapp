@@ -125,4 +125,7 @@ export default function FuelQuote() {
     );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
