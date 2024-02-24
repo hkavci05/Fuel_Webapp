@@ -126,6 +126,9 @@ export default function FuelQuote() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> refs/remotes/origin/main
