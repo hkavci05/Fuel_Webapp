@@ -17,26 +17,6 @@ import {
 } from "@/components/ui/card"
 import { Label } from "@/components/ui/label";
 
-// Form schema
-const formSchema = z.object({
-    gallonsRequested: z.number().min(1, { message: "Gallons must be greater than 0" }),
-    deliveryAddress: z.string().min(1, { message: "Delivery address is required" }), 
-    deliveryDate: z.date(), 
-    suggestedPrice: z.number(), 
-    totalAmountDue: z.number(), 
-});
-
-export default function FuelQuote() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-       //     deliveryAddress: Get the address from the client profile 
-    },
-    });
-
-    const handleSubmit = (data: z.infer<typeof formSchema>) => {
-        console.log(data); // send  data to your backend)
-    };
 
     return (
         
@@ -125,10 +105,3 @@ export default function FuelQuote() {
     );
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
-=======
->>>>>>> refs/remotes/origin/main
