@@ -8,7 +8,24 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+// Form schema
+const formSchema = z.object({
+  username: z.string().min(3, { message: "Invalid Username" }).max(20).regex(/^\w+$/),
+  password: z.string().min(3, { message: "Must be at least 3 characters" }),
+});
 
+
+export default function Login() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: ""
+    }
+  });
+
+  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+    console.log(data); // Do something with the username
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
