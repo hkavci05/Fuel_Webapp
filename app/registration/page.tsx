@@ -7,6 +7,30 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
+// Form schema
+const formSchema = z.object({
+    username: z.string().min(3, { message: "Username must contain at least 3 characters" }).max(20).regex(/^\w+$/),
+    password: z.string().min(3),
+    passwordConfirm: z.string()
+}).refine((data) => {
+    return data.password === data.passwordConfirm
+}, {
+    message: "passwords do not match",
+    path: [ "passwordConfirm"]
+})
+
+
+export default function Registration() {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            username: ""
+        }
+    });
+
+    const handleSubmit = (data: z.infer<typeof formSchema>) => {
+        console.log(data); 
+    }
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
